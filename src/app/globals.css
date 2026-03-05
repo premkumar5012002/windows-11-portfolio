@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-[#dbe7fb] text-slate-900 antialiased;
+}
+
+.os-button {
+  @apply inline-flex items-center rounded-md border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#2b7fff]/50;
+}
+
+.os-button:active {
+  @apply scale-[0.98] bg-slate-100;
+}
+
+.start-button {
+  @apply inline-flex h-10 w-10 items-center justify-center rounded-lg border border-transparent transition hover:border-slate-200/70 hover:bg-white/80 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2b7fff]/50;
+}
+
+.window-control {
+  @apply inline-flex h-8 w-8 items-center justify-center rounded-md text-slate-600 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#2b7fff]/50;
+}
+
+.active-window {
+  @apply border-slate-200 bg-white/90 text-slate-900;
+}
+
+@keyframes shell-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes surface-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pop-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes wallpaper-shift {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      0% 100%,
+      50% 50%;
+  }
+  100% {
+    background-position:
+      12% 8%,
+      88% 16%,
+      8% 86%,
+      48% 58%;
+  }
+}
+
+.animate-shell-enter {
+  animation: shell-enter 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-taskbar-enter {
+  animation: shell-enter 360ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+}
+
+.animate-window-enter {
+  animation: pop-enter 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-start-menu-enter {
+  animation: pop-enter 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-desktop-item {
+  animation: surface-enter 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--stagger-delay, 0ms);
+}
+
+.animate-app-panel {
+  animation: surface-enter 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-section-enter {
+  animation: surface-enter 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--stagger-delay, 0ms);
+}
+
+.animate-wallpaper {
+  animation: wallpaper-shift 18s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shell-enter,
+  .animate-taskbar-enter,
+  .animate-window-enter,
+  .animate-start-menu-enter,
+  .animate-desktop-item,
+  .animate-app-panel,
+  .animate-section-enter,
+  .animate-wallpaper {
+    animation: none !important;
+    transition: none !important;
+  }
+}
